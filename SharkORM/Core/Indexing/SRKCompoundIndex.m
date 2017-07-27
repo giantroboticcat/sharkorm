@@ -45,7 +45,7 @@
 
 -(NSString*) getPropertyString {
     NSString* propertyString = @"(";
-    NSString* delim = @",";
+    NSString* delim = @"";
     
     for (SRKIndexProperty *indexProperty in [self indexProperties]) {
         propertyString = [propertyString stringByAppendingString:[NSString stringWithFormat:@"%@%@ %@", delim, indexProperty.name,[indexProperty getSortOrderString]]];

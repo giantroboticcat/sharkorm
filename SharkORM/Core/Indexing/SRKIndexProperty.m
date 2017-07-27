@@ -24,6 +24,10 @@
 
 @implementation SRKIndexProperty
 
+-(id) initWithName:(NSString *)columnName {
+    return [self initWithName:columnName andOrder:SRKIndexSortOrderAscending];
+}
+
 -(id) initWithName:(NSString*)columnName andOrder:(enum SRKIndexSortOrder) sortOrder {
     self =  [super init];
     
@@ -41,6 +45,18 @@
         return @"desc";
     } else if (_order == SRKIndexSortOrderNoCase) {
         return @"collate nocase";
+    }
+    return nil;
+}
+
+-(NSString*) getSortOrderIndexName {
+    if (_order == SRKIndexSortOrderAscending) {
+        return @"asc";
+    } else if (_order == SRKIndexSortOrderDescending) {
+        return @"desc";
+    } else if (_order == SRKIndexSortOrderNoCase) {
+        /* This is named for backwards compatibility reasons, fixing the bug now will cause people to create an additional index within their database that does the same thing */
+        return @"desc";
     }
     return nil;
 }

@@ -1036,6 +1036,13 @@ typedef void(^SRKQueryAsyncResponse)(SRKResultSet* results);
 -(NSString*) getSortOrderString;
 
 /**
+ * Formats the object's SRKIndexSortOrder into the string representation necessary for naming indices
+ *
+ * @return (NSString) the string representation of the sort order
+ */
+-(NSString*) getSortOrderIndexName;
+
+/**
  * Initializes a new SRKIndexProperty object
  *
  * @param (NSString*)columnName The named column used within the index
@@ -1043,6 +1050,14 @@ typedef void(^SRKQueryAsyncResponse)(SRKResultSet* results);
  * @return (id)
  */
 -(id) initWithName:(NSString*)columnName andOrder:(enum SRKIndexSortOrder) sortOrder;
+
+/**
+ * Initializes a new SRKIndexProperty object with a default sort order of Ascending
+ *
+ * @param (NSString*)columnName The named column used within the index
+ * @return (id)
+ */
+-(id) initWithName:(NSString*)columnName;
 
 @end
 

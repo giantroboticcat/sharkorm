@@ -30,7 +30,7 @@
 
 @implementation SRKIndexDefinition
 
-- (void)addIndexWithProperties: (SRKIndexProperty *)indexProperty, ... {
+- (void)addIndexWithProperties: (SRKIndexProperty *)indexProperty, ... NS_REQUIRES_NIL_TERMINATION {
     if (!_components) {
         _components = [NSMutableArray new];
     }

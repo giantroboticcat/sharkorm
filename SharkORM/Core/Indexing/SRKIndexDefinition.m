@@ -41,7 +41,7 @@
     if (indexProperty) {
         [properties addObject:indexProperty];
         va_start(argumentList, indexProperty);
-        while ((eachObject = va_arg(argumentList, SRKIndexProperty*))) {
+        while ((eachObject = va_arg(argumentList, SRKIndexProperty*)) != nil) {
             [properties addObject:eachObject];
         }
         va_end(argumentList);

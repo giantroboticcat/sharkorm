@@ -38,7 +38,7 @@
 -(NSString*) getIndexName {
     NSString* indexName = @"idx_*tablename";
     for (SRKIndexProperty *indexProperty in [self indexProperties]) {
-        indexName = [indexName stringByAppendingString:[NSString stringWithFormat:@"_%@_%@", indexProperty.name, [indexProperty getSortOrderIndexName];
+        indexName = [indexName stringByAppendingString:[NSString stringWithFormat:@"_%@_%@", indexProperty.name, [indexProperty getSortOrderIndexName]]];
     }
     return indexName;
 }

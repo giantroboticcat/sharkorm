@@ -36,12 +36,12 @@
     }
     
     NSMutableArray *properties = [[NSMutableArray alloc] init];
-    id eachObject;
+    SRKIndexProperty *eachObject;
     va_list argumentList;
     if (indexProperty) {
         [properties addObject:indexProperty];
         va_start(argumentList, indexProperty);
-        while ((eachObject = va_arg(argumentList, id))) {
+        while ((eachObject = va_arg(argumentList, SRKIndexProperty*))) {
             [properties addObject:eachObject];
         }
     }

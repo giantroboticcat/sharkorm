@@ -44,6 +44,7 @@
         while ((eachObject = va_arg(argumentList, SRKIndexProperty*))) {
             [properties addObject:eachObject];
         }
+        va_end(argumentList);
     }
     
     

@@ -36,13 +36,13 @@
     }
     
     NSMutableArray *properties = [[NSMutableArray alloc] init];
-    SRKIndexProperty *eachObject;
+    SRKIndexProperty *eachProperty;
     va_list argumentList;
     if (indexProperty) {
         [properties addObject:indexProperty];
         va_start(argumentList, indexProperty);
-        while ((eachObject = va_arg(argumentList, SRKIndexProperty*)) != nil) {
-            [properties addObject:eachObject];
+        while ((eachProperty = va_arg(argumentList, SRKIndexProperty*)) != nil) {
+            [properties addObject:eachProperty];
         }
         va_end(argumentList);
     }
@@ -66,7 +66,7 @@
     
     SRKIndexProperty * property = [[SRKIndexProperty alloc] initWithName:propertyName andOrder:propOrder];
     
-    [self addIndexWithProperties:property];
+    [self addIndexWithProperties:property, nil];
     
 }
 
@@ -74,18 +74,16 @@
     SRKIndexProperty * property = [[SRKIndexProperty alloc] initWithName:propertyName andOrder:propOrder];
     SRKIndexProperty * secondProperty = [[SRKIndexProperty alloc] initWithName:secProperty andOrder:secOrder];
     
-    [self addIndexWithProperties:property, secondProperty];
+    [self addIndexWithProperties:property, secondProperty, nil];
 
 }
 
 - (void)generateIndexesForTable:(NSString*)tableName inDatabase:(NSString *)dbName{
-	
 	for (SRKCompoundIndex* index in _components) {
         NSString* execSql = [NSString stringWithFormat:@"CREATE INDEX %@ ON %@ %@;", [index getIndexName], tableName, [index getPropertyString]];
         execSql = [execSql stringByReplacingOccurrencesOfString:@"*tablename" withString:tableName];
         [SharkORM executeSQL:execSql inDatabase:dbName];
 	}
-	
 }
 
 @end

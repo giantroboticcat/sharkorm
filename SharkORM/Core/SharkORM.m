@@ -847,7 +847,7 @@ void spatialCalc(sqlite3_context *context, int argc, sqlite3_value **argv)
 
 + (void)addColumnToTable:(NSString*)tableName columnName:(NSString*)columnName columnType:(SRKColumnStorageType)columnType inDatabase:(NSString*)dbName withDefaultValue:(id)value {
     
-    NSString* sql = @"ALTER TABLE %@ ADD COLUMN %@ %@;";
+    NSString* sql = @"ALTER TABLE %@ ADD COLUMN `%@` %@;";
     NSString* type = [self sqliteTypeForColumnStorageType:columnType];
     
     if (type) {
